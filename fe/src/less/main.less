@@ -4,6 +4,8 @@
 @import 'constants/colors';
 @import 'constants/mixins';
 @import 'views/wizard';
+@import 'views/login';
+@import 'views/pick-spots';
 
 html,
 body {
@@ -13,7 +15,17 @@ body {
 }
 
 body {
-  background: @white;
+    background-image: data-uri('../images/bridge.jpg');
+    background-repeat: no-repeat;
+    background-position: -20px -160px;
+}
+
+h1 {
+    color: @blueish;
+}
+
+h2, h3, h4 {
+    color: @mint;
 }
 
 #main-content {

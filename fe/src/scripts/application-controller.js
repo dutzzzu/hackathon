@@ -17,7 +17,6 @@
         },
 
         loadRouter: function () {
-            debugger;
             this._applicationRouter = this._applicationRouter || new AppData._Routers.Application();
             Backbone.history.start();
         },

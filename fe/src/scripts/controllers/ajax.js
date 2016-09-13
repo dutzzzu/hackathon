@@ -48,8 +48,9 @@
             $.ajax(_.extend({
                     'url': url,
                     'method': method,
-                    'cache': false,
-                    'data': data,
+                    'crossDomain': true,
+                    'contentType': 'application/json',
+                    'data': JSON.stringify(data),
                     'dataType': 'json',
                     'headers': headers
                 }, options))

@@ -50,6 +50,7 @@ module.exports = function(grunt) {
                     './node_modules/jquery/dist/jquery.js',
                     './node_modules/underscore/underscore.js',
                     './node_modules/backbone/backbone.js',
+                    './node_modules/bootflat/js/bootstrap.min.js',
                     './node_modules/bootflat/bootflat/js/jquery.fs.selecter.min.js',
                     './node_modules/moment/moment.js',
 

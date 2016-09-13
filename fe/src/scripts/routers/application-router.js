@@ -10,19 +10,27 @@
         routes: {
             '': 'index',
             'wizard': 'wizard',
-            'login': 'login'
+            'wizard/:step': 'wizard',
+            'login': 'login',
+            'pick-spots': 'pickSpots'
         },
 
         index: function () {
-            this._renderView('Index');
+            Application.navigate('login');
         },
 
-        wizard: function () {
-            this._renderView('Wizard');
+        wizard: function (step) {
+            step = step || 1;
+            this._renderView('Wizard', {step: step});
         },
 
         login: function() {
             this._renderView('Login');
+        },
+
+        pickSpots: function() {
+            debugger;
+            this._renderView('Spots');
         },
 
         _renderView: function (viewName, attributes) {
