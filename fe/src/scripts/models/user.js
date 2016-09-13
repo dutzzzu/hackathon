@@ -52,7 +52,6 @@
             };
 
             Ajax.makePost('http://hackathon.dev/user', data, this._saveSuccess.bind(this), this._saveError.bind(this));
-            Ajax.makeGet('http://hackathon.dev/user');
         },
 
         _saveSuccess: function () {

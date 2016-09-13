@@ -5,7 +5,7 @@
         _name: '_ajaxController_',
 
         headers: {
-            contentType: "application/json; charset=utf-8"
+            // charset: "utf-8"
         },
 
         fetchTemplate: function (templateName, successCb, errorCb) {
@@ -46,11 +46,11 @@
 
             options = options || {};
 
-            debugger;
             $.ajax(_.extend({
                     'url': url,
                     'method': method,
-                    'cache': false,
+                    'crossDomain': true,
+                    'contentType': 'application/json',
                     'data': data,
                     'dataType': 'json',
                     'headers': headers
