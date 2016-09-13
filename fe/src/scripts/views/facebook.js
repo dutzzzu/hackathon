@@ -9,10 +9,21 @@ window.fbAsyncInit = function() {
     FB.Event.subscribe('auth.statusChange', function(response)
     {
         if (response.status === 'connected') {
+            console.log("a intrat");
+            var user;
+
             FB.api('/me', {
-                fields: 'last_name,likes,age_range'
+                fields: 'first_name,last_name,age_range,id,birthday,gender,hometown,name'
             }, function(response) {
-                console.log(response);
+                user = new AppData._Models.User({
+                    id: response.id,
+                    name: response.name,
+                    age: response.age_range,
+                    gender: response.gender,
+                    birthday: response.birthday,
+                    hometown: response.hometown
+                });
+                user.save();
             });
         }
     });
@@ -39,6 +50,7 @@ function checkFBStatus() {
             // and signed request each expire
             var uid = response.authResponse.userID;
             var accessToken = response.authResponse.accessToken;
+
         }
         else if (response.status === 'not_authorized') {
             // the user is logged in to Facebook,

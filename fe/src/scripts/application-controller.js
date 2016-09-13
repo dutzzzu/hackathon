@@ -6,7 +6,7 @@
     _NAMESPACE(AppData, '_Controllers.Application', Backbone.Model.extend({
         _name: '_applicationController_',
         _applicationRouter: null,
-        _userModel: null,
+        userModel: null,
 
         getCurrentPage: function () {
             var fragment = Backbone.history.getFragment(),
@@ -17,6 +17,7 @@
         },
 
         loadRouter: function () {
+            debugger;
             this._applicationRouter = this._applicationRouter || new AppData._Routers.Application();
             Backbone.history.start();
         },

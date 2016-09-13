@@ -8,9 +8,9 @@
 
         initialize: function() {
             // Verify model
-            var userModel = DataStorage.getObject("users",null);
+            var userModel = DataStorage.getObject(DataStorage.storageKeys.users, "travel");
 
-            if (userModel && false) {
+            if (userModel) {
                 Application.navigate("wizard");
             }
             else {
