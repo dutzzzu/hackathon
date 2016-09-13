@@ -51,6 +51,7 @@
     (function () {
         'use strict';
         document.addEventListener("DOMContentLoaded", function () {
+            window.Ajax = new AppData._Controllers.Ajax();
             window.DataStorage = new AppData._Helpers.DataStorage();
             window.Application = new AppData._Controllers.Application();
 

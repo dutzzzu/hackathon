@@ -52,7 +52,11 @@ module.exports = function(grunt) {
                     './node_modules/backbone/backbone.js',
 
                     './src/scripts/main.js',
+
+                    './src/scripts/core/nucleus.js',
+                    './src/scripts/core/**/*.js',
                     './src/scripts/helpers/**/*.js',
+                    './src/scripts/controllers/**/*.js',
                     './src/scripts/routers/**/*.js',
                     './src/scripts/views/**/*.js',
                     './src/scripts/application-controller.js',
