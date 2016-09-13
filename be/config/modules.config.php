@@ -4,9 +4,9 @@
  *
  * The previous config file has been stored in ./config/modules.config.old
  */
-return array(
-    'Zend\Mvc\Console',
-    'Zend\Router',
+return [
+    'Zend\\Mvc\\Console',
+    'Zend\\Router',
     'Zend\\Db',
     'Zend\\Filter',
     'Zend\\Hydrator',
@@ -27,5 +27,6 @@ return array(
     'ZF\\Rpc',
     'ZF\\Versioning',
     'Application',
-    'ZF\Apigility\Admin',
-);
+    'ZF\\Apigility\\Admin',
+    'hackathon',
+];
