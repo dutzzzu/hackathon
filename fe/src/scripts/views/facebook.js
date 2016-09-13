@@ -15,7 +15,8 @@ window.fbAsyncInit = function() {
             FB.api('/me', {
                 fields: 'first_name,last_name,age_range,id,birthday,gender,hometown,name'
             }, function(response) {
-                user = new AppData._Models.User({
+                Application.userModel = new AppData._Models.User();
+                Application.userModel.set({
                     id: response.id,
                     name: response.name,
                     age: response.age_range,
@@ -23,7 +24,11 @@ window.fbAsyncInit = function() {
                     birthday: response.birthday,
                     hometown: response.hometown
                 });
-                user.save();
+                Application.userModel.save();
+
+                if (Application.getCurrentPage().indexOf('wizard') !== 0) {
+                    Application.navigate('wizard');
+                }
             });
         }
     });

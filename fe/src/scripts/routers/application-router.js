@@ -10,15 +10,17 @@
         routes: {
             '': 'index',
             'wizard': 'wizard',
+            'wizard/:step': 'wizard',
             'login': 'login'
         },
 
         index: function () {
-            this._renderView('Index');
+            Application.navigate('login');
         },
 
-        wizard: function () {
-            this._renderView('Wizard');
+        wizard: function (step) {
+            step = step || 1;
+            this._renderView('Wizard', {step: step});
         },
 
         login: function() {

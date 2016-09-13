@@ -10,10 +10,19 @@
             likes: "",
             birthday: "",
             gender: "",
-            hometown: ""
+            hometown: "",
+            wizard: {
+                step1: '',
+                step2: '',
+                step3: '',
+                step4: '',
+                step5: '',
+                step6: ''
+            }
         },
 
         initialize: function(){
+            this.set(this.fetch());
         },
 
         save: function() {
@@ -21,7 +30,7 @@
         },
 
         fetch: function() {
-            return DataStorage.getObject(DataStorage.storageKeys.users);
+            return DataStorage.getObject(DataStorage.storageKeys.users, "travel");
         }
     }));
 }());
