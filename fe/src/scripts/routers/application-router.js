@@ -9,7 +9,8 @@
 
         routes: {
             '': 'index',
-            'wizard/:step': 'wizard'
+            'wizard/:step': 'wizard',
+            'login': 'login'
         },
 
         index: function () {
@@ -19,6 +20,10 @@
         wizard: function (stepNumber) {
             debugger;
             this._renderView('Wizard', {'step': stepNumber});
+        },
+
+        login: function() {
+            this._renderView('Login');
         },
 
         _renderView: function (viewName, attributes) {
