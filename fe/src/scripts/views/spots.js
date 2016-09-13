@@ -11,6 +11,7 @@
         },
 
         afterRender: function () {
+            $('#myCarousel').carousel();
             this.callSuper(this, 'afterRender');
         }
     }));
