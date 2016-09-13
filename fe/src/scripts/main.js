@@ -8,7 +8,8 @@
      **/
     configuration = {
         'ServerAddress': '192.168.88.150',
-        'ApplicationName': 'TravelApp'
+        'ApplicationName': 'TravelApp',
+        'GoogleApiKey': 'AIzaSyB29r2s9IHpQEYH3OsVoO_gWNwEX-OfKXE'
     };
 
     window.AppData = {};
@@ -56,7 +57,6 @@
             window.Application = new AppData._Controllers.Application();
 
             window.Application.loadRouter();
-            window.Application.trigger('started');
         });
     }());
 }());

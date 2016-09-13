@@ -12,7 +12,6 @@
         templateData: {},
 
         initialize: function (templateData) {
-            debugger;
             this.templateData = templateData || this.templateData;
             this.on('fetchTemplate:success', this.beforeRender);
             Ajax.fetchTemplate(this._getTemplateName(), this._fetchTemplateSuccess.bind(this));

@@ -8,10 +8,6 @@
         _applicationRouter: null,
         _userModel: null,
 
-        initialize: function () {
-            this.loadRouter();
-        },
-
         getCurrentPage: function () {
             var fragment = Backbone.history.getFragment(),
                 index1 = fragment.indexOf('/'),
