@@ -21,33 +21,27 @@
         },
 
         makeGet: function (url, data, successCb, errorCb, options) {
-            url = AppData._Constants.ServerURL + url;
             this._callAjax('GET', url, data, successCb, errorCb, options);
         },
 
         makePost: function (url, data, successCb, errorCb, options) {
-            url = AppData._Constants.ServerURL + url;
             this._callAjax('POST', url, data, successCb, errorCb, options);
         },
 
         makePut: function (url, data, successCb, errorCb, options) {
-            url = AppData._Constants.ServerURL + url;
             this._callAjax('PUT', url, data, successCb, errorCb, options);
         },
 
         makePatch: function (url, data, successCb, errorCb, options) {
-            url = AppData._Constants.ServerURL + url;
             this._callAjax('PATCH', url, data, successCb, errorCb, options);
         },
 
         makeDelete: function (url, data, successCb, errorCb, options) {
-            url = AppData._Constants.ServerURL + url;
             this._callAjax('DELETE', url, data, successCb, errorCb, options);
         },
 
         _callAjax: function (method, url, data, successCb, errorCb, options) {
-            var userSessionId = window.Application ? Application.userModel.get('sessionId') : '',
-                headers = window.Application ? _.extend(this.headers, {'session_id': userSessionId}) : this.headers;
+            var headers = window.Application ? _.extend(this.headers, {}) : this.headers;
 
             options = options || {};
 

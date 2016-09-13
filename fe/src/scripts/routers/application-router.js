@@ -17,7 +17,6 @@
         },
 
         wizard: function (stepNumber) {
-            debugger;
             this._renderView('Wizard', {'step': stepNumber});
         },
 
