@@ -8,11 +8,22 @@
         _activeView: null,
 
         routes: {
-            '': 'index'
+            '': 'index',
+            'wizard/:step': 'wizard',
+            'login': 'login'
         },
 
         index: function () {
             this._renderView('Index');
+        },
+
+        wizard: function (stepNumber) {
+            debugger;
+            this._renderView('Wizard', {'step': stepNumber});
+        },
+
+        login: function() {
+            this._renderView('Login');
         },
 
         _renderView: function (viewName, attributes) {
