@@ -28,9 +28,8 @@
             this._renderView('Login');
         },
 
-        pickSpots: function() {
-            debugger;
-            this._renderView('Spots');
+        pickSpots: function(options) {
+            this._renderView('Spots', options);
         },
 
         _renderView: function (viewName, attributes) {

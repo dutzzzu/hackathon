@@ -6,13 +6,22 @@
         _renderIn: '#main-content',
         _renderType: 'replace',
 
-        initialize: function() {
-            this.callSuper(this, 'initialize');
-        },
-
         afterRender: function () {
-            $('#myCarousel').carousel();
             this.callSuper(this, 'afterRender');
+
+            var swiper = new Swiper('.swiper-container', {
+                nextButton: '.swiper-button-next',
+                prevButton: '.swiper-button-prev',
+                slidesPerView: 3,
+                centeredSlides: true,
+                spaceBetween: 30
+            });
+
+            swiper.appendSlide([
+                '<div class="swiper-slide">Slide ' + (11) + '</div>',
+                '<div class="swiper-slide">Slide ' + (12) + '</div>'
+            ]);
+
         }
     }));
 }());
