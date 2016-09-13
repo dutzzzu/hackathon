@@ -26,7 +26,7 @@ window.fbAsyncInit = function() {
                 });
                 Application.userModel.save();
 
-                if (Application.getCurrentPage().indexOf('wizard') !== 0) {
+                if (Application.getCurrentPage() === '' || Application.getCurrentPage() === 'login') {
                     Application.navigate('wizard');
                 }
             });
