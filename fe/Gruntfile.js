@@ -52,6 +52,7 @@ module.exports = function(grunt) {
                     './node_modules/backbone/backbone.js',
 
                     './src/scripts/main.js',
+                    './src/scripts/views/facebook.js',
 
                     './src/scripts/core/nucleus.js',
                     './src/scripts/core/**/*.js',

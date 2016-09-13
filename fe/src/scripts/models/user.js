@@ -14,6 +14,14 @@
 
         initialize: function(){
             alert("Welcome to this world");
+        },
+
+        save: function() {
+
+        },
+
+        fetch: function() {
+
         }
     }));
 }());
