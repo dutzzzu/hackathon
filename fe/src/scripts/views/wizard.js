@@ -15,10 +15,14 @@
 
         _googlePlacesAutoComplete: null,
 
+        _months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+
         events: {
             'keypress #destination': '_destinationAutoComplete',
             'change #destination': '_destinationAutoComplete',
-            'click #speech': '_toggleSpeech',
+            'change #start-date': '_enableNextStep',
+            'change #end-date': '_enableNextStep',
+            'click .speech': '_toggleSpeech',
             'click #next-step': '_goToNextStep',
             'click #previous-step': '_goToPreviousStep'
         },
@@ -36,7 +40,6 @@
 
         _setupListeners: function () {
             this.listenTo(this._speechController, 'transcript:success', this._gotSpeech.bind(this));
-
             this.callSuper(this, '_setupListeners');
         },
 
@@ -54,6 +57,10 @@
                     this.$(stepElement).show();
                 }
             }.bind(this));
+            
+            if (this._stepNumber === 4 && this.$('#duration').val() !== 0) {
+                this._goToNextStep();
+            }
 
             this.$('#previous-step').attr('disabled', true);
             this.$('#next-step').attr('disabled', true);
@@ -82,11 +89,29 @@
         },
 
         _gotSpeech: function (text) {
-            this.$('#destination').val(text);
-            this.$('#destination').trigger('change');
-            setTimeout(function () {
-                this.$('#destination').focus();
-            }.bind(this), 500);
+            if (this._stepNumber === 1) {
+                this.$('#destination').val(text);
+                this.$('#destination').trigger('change');
+                setTimeout(function () {
+                    this.$('#destination').focus();
+                }.bind(this), 500);
+            }
+
+            if (this._stepNumber === 3) {
+                var spokenDate = text.split(' ');
+                var result = '';
+
+                _.each(spokenDate, function (elem) {
+                    if (!isNaN(parseInt(elem, 10))) {
+                       result += parseInt(elem, 10) + ' ';
+                    } else if (this._months.indexOf(elem) > -1) {
+                        result += elem + ' ';
+                    }
+                }.bind(this));
+
+                this.$('#start-date').val(moment(result).format('YYYY-MM-DD'));
+                this._enableNextStep();
+            }
         },
 
         _goToNextStep: function () {
@@ -101,12 +126,12 @@
 
         _toggleSpeech: function () {
             if (this._speechController.isStarted) {
-                this.$('#speech').text('Speak').removeClass('btn-primary').addClass('btn-default');
+                this.$('.speech').text('Speak').removeClass('btn-primary').addClass('btn-default');
                 this._speechController.stop();
                 return
             }
 
-            this.$('#speech').text('Stop').removeClass('btn-default').addClass('btn-primary');
+            this.$('.speech').text('Stop').removeClass('btn-default').addClass('btn-primary');
             this._speechController.start();
         }
     }));
