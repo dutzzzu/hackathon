@@ -4,24 +4,24 @@
     _NAMESPACE(AppData, '_Models.User', Backbone.Model.extend({
 
         defaults: {
-            name: 'BLa',
-            age: 1,
+            id: "",
+            name: "",
+            age: "",
             likes: "",
             birthday: "",
-            country: "Romania",
-            gender: "male"
+            gender: "",
+            hometown: ""
         },
 
         initialize: function(){
-            alert("Welcome to this world");
         },
 
         save: function() {
-
+            DataStorage.setObject(DataStorage.storageKeys.users, "travel", this.toJSON());
         },
 
         fetch: function() {
-
+            return DataStorage.getObject(DataStorage.storageKeys.users);
         }
     }));
 }());
