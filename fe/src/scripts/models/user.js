@@ -31,6 +31,36 @@
 
         fetch: function() {
             return DataStorage.getObject(DataStorage.storageKeys.users, "travel");
+        },
+
+        saveToApi: function () {
+            var data = {
+                fb_id: this.get('id'),
+                name: this.get('name'),
+                age: (this.get('age').min || 0) + '-' + (this.get('age').max || 99),
+                // likes: this.get('likes'),
+                // birthday: this.get('birthday'),
+                gender: this.get('gender'),
+                // hometown: this.get('hometown'),
+                destination_lat: this.get('wizard').step1.api.lat,
+                destination_lng: this.get('wizard').step1.api.lng,
+                start_date: this.get('wizard').step3,
+                end_date: this.get('wizard').step4,
+                accommodation_lat: this.get('wizard').step5.api.lat,
+                accommodation_lng: this.get('wizard').step5.api.lng,
+                interests: this.get('wizard').step6
+            };
+
+            Ajax.makePost('http://hackathon.dev/user', data, this._saveSuccess.bind(this), this._saveError.bind(this));
+            Ajax.makeGet('http://hackathon.dev/user');
+        },
+
+        _saveSuccess: function () {
+
+        },
+
+        _saveError: function () {
+
         }
     }));
 }());

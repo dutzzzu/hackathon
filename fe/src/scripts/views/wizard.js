@@ -87,6 +87,12 @@
             autocomplete = new this._googlePlacesAutoComplete(this.$(event.target)[0]);
             autocomplete.addListener('place_changed', function() {
                 this._enableNextStep();
+
+                this._destinationDetails = {
+                    lat: autocomplete.getPlace().geometry.location.lat(),
+                    lng: autocomplete.getPlace().geometry.location.lng()
+                }
+
             }.bind(this));
         },
 
@@ -134,6 +140,7 @@
             if (this._stepNumber < this._maxSteps) {
                 Application.navigate('wizard/' + (this._stepNumber + 1));
             } else {
+                Application.userModel.saveToApi();
                 Application.navigate('pick-spots');
             }
         },
@@ -148,7 +155,10 @@
             var wizardData = Application.userModel.get('wizard');
             switch(this._stepNumber) {
                 case 1:
-                    wizardData.step1 = this.$('#destination').val();
+                    wizardData.step1 = {
+                        pretty: this.$('#destination').val(),
+                        api: this._destinationDetails
+                    };
                     break;
                 case 2:
                     wizardData.step2 = this.$('#duration').val();
@@ -163,7 +173,10 @@
                     }
                     break;
                 case 5:
-                    wizardData.step5 = this.$('#staying').val();
+                    wizardData.step5 = {
+                        pretty: this.$('#staying').val(),
+                        api: this._destinationDetails
+                    };
                     break;
                 case 6:
                     var categories = [];
