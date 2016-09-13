@@ -48,8 +48,14 @@ module.exports = function(grunt) {
             dist: {
                 src: [
                     './node_modules/jquery/dist/jquery.js',
-                    './node_modules/backbone/node_modules/underscore/underscore.js',
+                    './node_modules/underscore/underscore.js',
                     './node_modules/backbone/backbone.js',
+
+                    './src/scripts/main.js',
+                    './src/scripts/helpers/**/*.js',
+                    './src/scripts/routers/**/*.js',
+                    './src/scripts/views/**/*.js',
+                    './src/scripts/application-controller.js',
 
                     './src/scripts/**/*.js'
                 ],
