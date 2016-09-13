@@ -5,7 +5,6 @@
         _name: '_ajaxController_',
 
         headers: {
-            // charset: "utf-8"
         },
 
         fetchTemplate: function (templateName, successCb, errorCb) {
@@ -51,7 +50,7 @@
                     'method': method,
                     'crossDomain': true,
                     'contentType': 'application/json',
-                    'data': data,
+                    'data': JSON.stringify(data),
                     'dataType': 'json',
                     'headers': headers
                 }, options))

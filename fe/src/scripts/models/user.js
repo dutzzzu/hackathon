@@ -46,9 +46,9 @@
                 destination_lng: this.get('wizard').step1.api.lng,
                 start_date: this.get('wizard').step3,
                 end_date: this.get('wizard').step4,
-                accommodation_lat: this.get('wizard').step5.api.lat,
-                accommodation_lng: this.get('wizard').step5.api.lng,
-                interests: this.get('wizard').step6
+                accomodation_lat: this.get('wizard').step5.api.lat,
+                accomodation_lng: this.get('wizard').step5.api.lng,
+                // interests: this.get('wizard').step6
             };
 
             Ajax.makePost('http://hackathon.dev/user', data, this._saveSuccess.bind(this), this._saveError.bind(this));
