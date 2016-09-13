@@ -28,6 +28,11 @@ return [
             Controller\IndexController::class => InvokableFactory::class,
         ],
     ],
+    'service_manager' => array(
+      'invokables' => array(
+        'GoogleListener' => 'Application\Event\GoogleListener',
+      ),
+    ),
     'view_manager' => [
         'display_not_found_reason' => true,
         'display_exceptions'       => true,

@@ -5,6 +5,9 @@
  */
 
 return [
+    'listeners' => [
+      'GoogleListener'
+    ],
     // Retrieve the list of modules for this application.
     'modules' => include __DIR__ . '/modules.config.php',
     // This should be an array of paths in which modules reside.

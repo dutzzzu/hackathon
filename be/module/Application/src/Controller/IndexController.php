@@ -6,6 +6,7 @@
 
 namespace Application\Controller;
 
+use Application\Event\GoogleListener;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use ZF\Apigility\Admin\Module as AdminModule;
@@ -14,7 +15,7 @@ class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
-        if (class_exists(AdminModule::class, false)) {
+      if (class_exists(AdminModule::class, false)) {
             return $this->redirect()->toRoute('zf-apigility/ui');
         }
         return new ViewModel();

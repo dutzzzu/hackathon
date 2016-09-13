@@ -91,4 +91,24 @@ return [
             ],
         ],
     ],
+    'zf-mvc-auth' => [
+        'authorization' => [
+            'hackathon\\V1\\Rest\\User\\Controller' => [
+                'collection' => [
+                    'GET' => false,
+                    'POST' => false,
+                    'PUT' => false,
+                    'PATCH' => false,
+                    'DELETE' => false,
+                ],
+                'entity' => [
+                    'GET' => false,
+                    'POST' => false,
+                    'PUT' => false,
+                    'PATCH' => false,
+                    'DELETE' => false,
+                ],
+            ],
+        ],
+    ],
 ];
