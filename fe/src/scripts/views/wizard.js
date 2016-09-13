@@ -18,18 +18,19 @@
         events: {
             'keypress #destination': '_destinationAutoComplete',
             'change #destination': '_destinationAutoComplete',
-            'click #speech': '_toggleSpeech'
+            'click #speech': '_toggleSpeech',
+            'click #next-step': '_goToNextStep',
+            'click #previous-step': '_goToPreviousStep'
         },
 
         initialize: function (options) {
             this._googlePlacesAutoComplete = google.maps.places.Autocomplete;
-            this._stepNumber = parseInt(options.attributes.step, 10);
-
             this.callSuper(this, 'initialize');
         },
 
         afterRender: function () {
             this._updateStepVisibility();
+            this._initializeSelecter();
             this.callSuper(this, 'afterRender');
         },
 
@@ -37,6 +38,10 @@
             this.listenTo(this._speechController, 'transcript:success', this._gotSpeech.bind(this));
 
             this.callSuper(this, '_setupListeners');
+        },
+
+        _initializeSelecter: function () {
+            this.$(".selecter_basic").selecter({callback: this._enableNextStep.bind(this)});
         },
 
         _updateStepVisibility: function () {
@@ -49,10 +54,16 @@
                     this.$(stepElement).show();
                 }
             }.bind(this));
+
+            this.$('#previous-step').attr('disabled', true);
+            this.$('#next-step').attr('disabled', true);
+
+            if (this._stepNumber > 1) {
+                this.$('#previous-step').attr('disabled', false);
+            }
         },
 
         _destinationAutoComplete: function (event) {
-            debugger;
             var destination = this.$(event.target).val();
             var autocomplete;
 
@@ -60,7 +71,14 @@
                 return;
             }
 
-            autocomplete = new this._googlePlacesAutoComplete(this.$(event.target)[0], {types: ['geocode']});
+            autocomplete = new this._googlePlacesAutoComplete(this.$(event.target)[0]);
+            autocomplete.addListener('place_changed', function() {
+                this._enableNextStep();
+            }.bind(this));
+        },
+
+        _enableNextStep: function () {
+            this.$('#next-step').attr('disabled', false);
         },
 
         _gotSpeech: function (text) {
@@ -71,14 +89,24 @@
             }.bind(this), 500);
         },
 
+        _goToNextStep: function () {
+            this._stepNumber += 1;
+            this._updateStepVisibility();
+        },
+
+        _goToPreviousStep: function () {
+            this._stepNumber -= 1;
+            this._updateStepVisibility();
+        },
+
         _toggleSpeech: function () {
             if (this._speechController.isStarted) {
-                this.$('#speech').text('Speak');
+                this.$('#speech').text('Speak').removeClass('btn-primary').addClass('btn-default');
                 this._speechController.stop();
                 return
             }
 
-            this.$('#speech').text('Stop');
+            this.$('#speech').text('Stop').removeClass('btn-default').addClass('btn-primary');
             this._speechController.start();
         }
     }));

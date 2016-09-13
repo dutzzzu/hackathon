@@ -50,6 +50,7 @@ module.exports = function(grunt) {
                     './node_modules/jquery/dist/jquery.js',
                     './node_modules/underscore/underscore.js',
                     './node_modules/backbone/backbone.js',
+                    './node_modules/bootflat/bootflat/js/jquery.fs.selecter.min.js',
 
                     './src/scripts/main.js',
                     './src/scripts/views/facebook.js',

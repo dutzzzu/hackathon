@@ -1,24 +1,35 @@
 <script type="text/template" id="wizard-template">
-    <div id="wizard" class="wizard-container col-lg-6 col-md-6 col-sm-8 col-xs-12 col-lg-offset-3 col-md-offset-3 col-sm-offset-2">
-        <div id="step-1" class="wizard-step">
+    <div id="wizard" class="wizard-container thumbnail col-lg-6 col-md-6 col-sm-8 col-xs-12 col-lg-offset-3 col-md-offset-3 col-sm-offset-2">
+        <div id="step-1" class="wizard-step col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="step-title">Where are you going?</div>
             <input id="destination" type="text" class="form-control" placeholder="e.g. London, New York, Paris">
-            <button id="speech">Speak</button>
+            <button type="button" id="speech" class="btn btn-default btn-block">Speak</button>
         </div>
-        <div id="step-2" class="wizard-step">
+        <div id="step-2" class="wizard-step col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="step-title">For how long?</div>
+            <select id="duration" name="selecter_basic" class="selecter_basic">
+                <option value="1">One Day</option>
+                <option value="2">City Break</option>
+                <option value="3">One Week</option>
+                <option value="5">Other</option>
+            </select>
         </div>
-        <div id="step-3" class="wizard-step">
+        <div id="step-3" class="wizard-step col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="step-title">Start Date</div>
         </div>
-        <div id="step-4" class="wizard-step">
+        <div id="step-4" class="wizard-step col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="step-title">End Date</div>
         </div>
-        <div id="step-5" class="wizard-step">
+        <div id="step-5" class="wizard-step col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="step-title">Where are you staying?</div>
         </div>
-        <div id="step-6" class="wizard-step">
+        <div id="step-6" class="wizard-step col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="step-title">What would you like to do?</div>
+        </div>
+
+        <div id="next-container" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <button type="button" id="previous-step" class="btn btn-primary pull-left" disabled>Previous</button>
+            <button type="button" id="next-step" class="btn btn-success pull-right" disabled>Next</button>
         </div>
     </div>
 </script>

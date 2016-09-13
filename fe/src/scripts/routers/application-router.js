@@ -9,7 +9,7 @@
 
         routes: {
             '': 'index',
-            'wizard/:step': 'wizard',
+            'wizard': 'wizard',
             'login': 'login'
         },
 
@@ -17,8 +17,8 @@
             this._renderView('Index');
         },
 
-        wizard: function (stepNumber) {
-            this._renderView('Wizard', {'step': stepNumber});
+        wizard: function () {
+            this._renderView('Wizard');
         },
 
         login: function() {
