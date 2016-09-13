@@ -3,6 +3,7 @@
 return [
     // Development time modules
     'modules' => [
+        'ZF\Apigility\Admin',
     ],
 
     'module_listener_options' => [
