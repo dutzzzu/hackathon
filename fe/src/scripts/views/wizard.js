@@ -74,6 +74,12 @@
             if (this._stepNumber > 1) {
                 this.$('#previous-step').attr('disabled', false);
             }
+
+            try {
+                this._getStepData();
+            } catch (ignore) {
+                setTimeout(this._updateStepVisibility.bind(this), 300);
+            }
         },
 
         _destinationAutoComplete: function (event) {
@@ -157,7 +163,7 @@
                 case 1:
                     wizardData.step1 = {
                         pretty: this.$('#destination').val(),
-                        api: this._destinationDetails
+                        api: this._destinationDetails || Application.userModel.get('wizard').step1.api
                     };
                     break;
                 case 2:
@@ -175,7 +181,7 @@
                 case 5:
                     wizardData.step5 = {
                         pretty: this.$('#staying').val(),
-                        api: this._destinationDetails
+                        api: this._destinationDetails ||Application.userModel.get('wizard').step5.api
                     };
                     break;
                 case 6:
@@ -191,6 +197,56 @@
 
             Application.userModel.set('wizard', wizardData);
             Application.userModel.save();
+        },
+
+        _getStepData: function () {
+            var wizardData = Application.userModel.get('wizard');
+            switch(this._stepNumber) {
+                case 1:
+                    this.$('#destination').val(wizardData.step1.pretty);
+                    if (wizardData.step1.pretty) {
+                        this._enableNextStep();
+                    }
+                    break;
+                case 2:
+                    this.$('#duration').val(wizardData.step2);
+                    if (wizardData.step2) {
+                        this._enableNextStep();
+                    }
+                    break;
+                case 3:
+                    this.$('#start-date').val(wizardData.step3);
+                    if (wizardData.step3) {
+                        this._enableNextStep();
+                    }
+                    break;
+                case 4:
+                    this.$('#end-date').val(wizardData.step4);
+                    if (wizardData.step4) {
+                        this._enableNextStep();
+                    }
+                    break;
+                case 5:
+                    this.$('#staying').val(wizardData.step5.pretty);
+                    if (wizardData.step5.pretty) {
+                        this._enableNextStep();
+                    }
+                    break;
+                case 6:
+                    _.each(this.$('input[type="checkbox"]'), function (checkbox) {
+                        if (wizardData.step6.indexOf(checkbox.getAttribute('id')) > -1) {
+                            checkbox.setAttribute('checked', 'checked');
+                        }
+
+                    });
+                    if (wizardData.step6.length) {
+                        this._enableNextStep();
+                    }
+
+                    break;
+                default:
+                    break;
+            }
         },
 
         _toggleSpeech: function () {
