@@ -5,9 +5,16 @@
         _name: '_spotsView_',
         _renderIn: '#main-content',
         _renderType: 'replace',
+        selectedCount: 0,
 
         events: {
             'click .swiper-slide': '_selectSlide'
+        },
+
+        initialize: function(options) {
+            this.templateData.spots = options.attributes["spots"];
+            this.selectedCount = 0;
+            this.callSuper(this, 'initialize',[this.templateData]);
         },
 
         afterRender: function () {
@@ -23,19 +30,29 @@
                 centeredSlides: true,
                 spaceBetween: 15
             });
-
-            swiper.appendSlide([
-                '<div class="swiper-slide">Slide ' + (11) + '</div>',
-                '<div class="swiper-slide">Slide ' + (12) + '</div>'
-            ]);
-
         },
 
         _selectSlide: function (event) {
             if ($(event.currentTarget).attr('data-selected') === 'true') {
                 $(event.currentTarget).attr('data-selected', false);
+                if (this.selectedCount > 0) this.selectedCount--;
             } else {
                 $(event.currentTarget).attr('data-selected', true);
+                this.selectedCount++;
+            }
+
+            this._displayRouteButton();
+        },
+
+        _displayRouteButton: function() {
+            var button = $('#fixedbutton');
+            if (this.selectedCount === 1) {
+                button.removeClass("hidden");
+                button.addClass("visible");
+            }
+            else if (this.selectedCount === 0) {
+                button.removeClass("visible");
+                button.addClass("hidden");
             }
         }
     }));
