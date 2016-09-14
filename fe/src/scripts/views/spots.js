@@ -6,9 +6,12 @@
         _renderIn: '#main-content',
         _renderType: 'replace',
         selectedCount: 0,
+        
+        _selections: [],
 
         events: {
-            'click .swiper-slide': '_selectSlide'
+            'click .swiper-slide': '_selectSlide',
+            'click #fixedbutton': '_seeResult'
         },
 
         initialize: function(options) {
@@ -36,9 +39,11 @@
             if ($(event.currentTarget).attr('data-selected') === 'true') {
                 $(event.currentTarget).attr('data-selected', false);
                 if (this.selectedCount > 0) this.selectedCount--;
+                this._selections.splice(this._selections.indexOf($(event.currentTarget).find('.spot-title').text().trim()), 1);
             } else {
                 $(event.currentTarget).attr('data-selected', true);
                 this.selectedCount++;
+                this._selections.push($(event.currentTarget).find('.spot-title').text().trim());
             }
 
             this._displayRouteButton();
@@ -54,6 +59,11 @@
                 button.removeClass("visible");
                 button.addClass("hidden");
             }
+        },
+
+        _seeResult: function () {
+            Application.userModel.set('yetAnotherShittyStupidVar', this._selections);
+            Application.navigate('results');
         }
     }));
 }());

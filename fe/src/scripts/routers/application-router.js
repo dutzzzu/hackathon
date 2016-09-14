@@ -35,7 +35,8 @@
         },
 
         results: function () {
-            this._renderView('Results');
+            var results = Application.userModel.get('yetAnotherShittyStupidVar');
+            this._renderView('Results', { results: results });
         },
 
         _renderView: function (viewName, attributes) {
