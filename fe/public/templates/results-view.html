@@ -6,7 +6,7 @@
                 <div class="title">Day <%- day.day %></div>
                 <ul class="itinerary">
                     <% _.each(day.places, function (place) { %>
-                        <li><%- place %></li>
+                        <li><%- place.name %></li>
                     <% }); %>
                 </ul>
             </div>

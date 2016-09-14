@@ -39,11 +39,21 @@
             if ($(event.currentTarget).attr('data-selected') === 'true') {
                 $(event.currentTarget).attr('data-selected', false);
                 if (this.selectedCount > 0) this.selectedCount--;
-                this._selections.splice(this._selections.indexOf($(event.currentTarget).find('.spot-title').text().trim()), 1);
+                //this._selections.splice(this._selections.indexOf($(event.currentTarget).find('.spot-title').text().trim()), 1);
+                var item1 = $(event.currentTarget).find('.spot-title');
+                this._selections.splice(this._selections.filter(function(a){ return a.id === item1.attr('data-placeId') })[0], 1);
+
             } else {
                 $(event.currentTarget).attr('data-selected', true);
                 this.selectedCount++;
-                this._selections.push($(event.currentTarget).find('.spot-title').text().trim());
+                //this._selections.push($(event.currentTarget).find('.spot-title').text().trim());
+                var item = $(event.currentTarget).find('.spot-title');
+                this._selections.push({
+                    id: item.attr("data-placeId"),
+                    lat: item.attr("data-latitude"),
+                    lng: item.attr("data-longitude"),
+                    name: item.text().trim()
+                })
             }
 
             this._displayRouteButton();

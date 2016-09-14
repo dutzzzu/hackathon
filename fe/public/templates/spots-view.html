@@ -13,7 +13,7 @@
                                     <div class="spot-image">
                                         <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=<%- subItem.photo_ref %>&key=AIzaSyB29r2s9IHpQEYH3OsVoO_gWNwEX-OfKXE" alt="">
                                     </div>
-                                    <div class="spot-title">
+                                    <div class="spot-title" data-placeId="<%=subItem.place_id %>" data-latitude="<%=subItem.lat%>" data-longitude="<%=subItem.lng %>">
                                         <%= subItem.name %>
                                     </div>
                                     <div class="spot-description">
