@@ -135,8 +135,30 @@ class Api_UserController extends Zend_Rest_Controller {
         $google['rating'] = !empty($result->rating) ? $result->rating : '';
         $google['name'] = $result->name;
         $google['subcategory'] = $interest;
+        //$google['desc'] = $this->getWiki($result->name);
 
         return $google;
+    }
+
+    private function getWiki($name) {
+        $url = "https://en.wikipedia.org/w/api.php?format=json&action=query&prop=extracts&titles=" . urlencode($name);
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Expect:'));
+        curl_setopt($ch, CURLOPT_TIMEOUT, '1000');
+        curl_setopt($ch, CURLOPT_MAXREDIRS, 10);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        $result = curl_exec($ch);
+        curl_close($ch);
+        $result = json_decode($result);
+        $desc = '';
+        if (!empty($result->query->pages)) {
+            $page = (array)$result->query->pages;
+            $page = reset($page);
+            if (!empty($page->extract)) $desc = $page->extract;
+        }
+        return $desc;
     }
 
 }
