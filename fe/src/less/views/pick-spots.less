@@ -2,12 +2,34 @@
     .center-y();
     width: 100%;
     margin: 0 auto;
-    background: #fff;
+    background: transparent;
+}
+
+.swiper-container {
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
 
 .spot-image {
     img {
         width: 100%;
+    }
+}
+
+.swiper-slide {
+    background: @white-pure;
+    opacity: 0.4;
+    padding: 15px;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+
+    &[data-selected='true'] {
+        opacity: 1;
+    }
+
+    &:hover {
+        transform: scale(1.1);
+        opacity: 0.8;
     }
 }
 

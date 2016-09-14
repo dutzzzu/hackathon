@@ -6,6 +6,10 @@
         _renderIn: '#main-content',
         _renderType: 'replace',
 
+        events: {
+            'click .swiper-slide': '_selectSlide'
+        },
+
         afterRender: function () {
             this.callSuper(this, 'afterRender');
 
@@ -22,6 +26,14 @@
                 '<div class="swiper-slide">Slide ' + (12) + '</div>'
             ]);
 
+        },
+
+        _selectSlide: function (event) {
+            if ($(event.currentTarget).attr('data-selected') === 'true') {
+                $(event.currentTarget).attr('data-selected', false);
+            } else {
+                $(event.currentTarget).attr('data-selected', true);
+            }
         }
     }));
 }());
