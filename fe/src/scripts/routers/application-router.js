@@ -30,8 +30,7 @@
         },
 
         pickSpots: function() {
-            var spots = Application.shittyVariableToStoreDataIn;
-            debugger;
+            var spots = Application.userModel.get('shittyVariableToStoreDataIn');
             this._renderView('Spots', { spots: spots });
         },
 

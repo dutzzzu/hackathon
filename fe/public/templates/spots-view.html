@@ -3,32 +3,35 @@
     <div id="pick-spots" class="pick-spots-container col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
         <% _.each(spots, function (spot) { %>
-
-        <!-- Swiper -->
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <% _.each(spot, function (item) { %>
-                    <div class="swiper-slide">
-                        <div class="spot-image">
-                            <img src="http://www.world-best-cities.com/images/london_church_westminster_abbey.jpg" alt="">
-                        </div>
-                        <div class="spot-title">
-                            <%=item %>
-                        </div>
-                        <div class="spot-description">
-                            Westminster Abbey, formally titled the Collegiate Church of St Peter at Westminster, is a large, mainly Gothic abbey church in the City of Westminster, London, just to the west of the Palace of Westminster.
-                        </div>
+            <% if (Object.keys(spot).length) { %>
+                <!-- Swiper -->
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        <% _.each(spot, function (item) { %>
+                            <% _.each(item, function (subItem) { %>
+                                <div class="swiper-slide">
+                                    <div class="spot-image">
+                                        <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=<%- subItem.photo_ref %>&key=AIzaSyB29r2s9IHpQEYH3OsVoO_gWNwEX-OfKXE" alt="">
+                                    </div>
+                                    <div class="spot-title">
+                                        <%= subItem.name %>
+                                    </div>
+                                    <div class="spot-description">
+                                        Westminster Abbey, formally titled the Collegiate Church of St Peter at Westminster, is a large, mainly Gothic abbey church in the City of Westminster, London, just to the west of the Palace of Westminster.
+                                    </div>
+                                </div>
+                            <% }); %>
+                        <% }); %>
                     </div>
-                <% }); %>
-            </div>
 
-            <!-- Add Pagination -->
-            <div class="swiper-pagination"></div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
 
-            <!-- Add Arrows -->
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-        </div>
+                    <!-- Add Arrows -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            <% } %>
 
         <% }); %>
 
