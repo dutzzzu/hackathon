@@ -23,6 +23,6 @@ class GoogleListener implements ListenerAggregateInterface {
   }
 
   public function doEvent() {
-    die('motherfucker');
+//    die('motherfucker');
   }
 }

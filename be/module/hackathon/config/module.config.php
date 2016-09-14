@@ -112,7 +112,7 @@ return [
                 1 => 'POST',
             ],
             'collection_query_whitelist' => [],
-            'page_size' => '5',
+            'page_size' => '25',
             'page_size_param' => 'pagesizeparameter',
             'entity_class' => \hackathon\V1\Rest\Places\PlacesEntity::class,
             'collection_class' => \hackathon\V1\Rest\Places\PlacesCollection::class,
@@ -216,13 +216,13 @@ return [
                 'is_collection' => true,
             ],
             \hackathon\V1\Rest\Places\PlacesEntity::class => [
-                'entity_identifier_name' => 'id',
+                'entity_identifier_name' => 'ID',
                 'route_name' => 'hackathon.rest.places',
                 'route_identifier_name' => 'places_id',
                 'hydrator' => \Zend\Hydrator\ArraySerializable::class,
             ],
             \hackathon\V1\Rest\Places\PlacesCollection::class => [
-                'entity_identifier_name' => 'id',
+                'entity_identifier_name' => 'ID',
                 'route_name' => 'hackathon.rest.places',
                 'route_identifier_name' => 'places_id',
                 'is_collection' => true,
@@ -263,7 +263,7 @@ return [
                 'table_name' => 'places',
                 'hydrator_name' => \Zend\Hydrator\ArraySerializable::class,
                 'controller_service_name' => 'hackathon\\V1\\Rest\\Places\\Controller',
-                'entity_identifier_name' => 'id',
+                'entity_identifier_name' => 'ID',
                 'table_service' => 'hackathon\\V1\\Rest\\Places\\PlacesResource\\Table',
             ],
             'hackathon\\V1\\Rest\\UserSelection\\UserSelectionResource' => [
