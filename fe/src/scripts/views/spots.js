@@ -13,12 +13,15 @@
         afterRender: function () {
             this.callSuper(this, 'afterRender');
 
+            var slidesPerView = $(window).outerWidth() > 400 ? 2 : 1;
+            slidesPerView = $(window).outerWidth() > 600 ? 3 : slidesPerView;
+
             var swiper = new Swiper('.swiper-container', {
                 nextButton: '.swiper-button-next',
                 prevButton: '.swiper-button-prev',
-                slidesPerView: 3,
+                slidesPerView: slidesPerView,
                 centeredSlides: true,
-                spaceBetween: 30
+                spaceBetween: 15
             });
 
             swiper.appendSlide([
