@@ -30,7 +30,25 @@
         },
 
         pickSpots: function() {
-            this._renderView('Spots');
+
+            debugger;
+            var spots = {
+                historical: [ 'asdasd', 'dasdasd', 'asdasd', 'dasdasd','asdasd', 'dasdasd'],
+                shopping: [ 'asdasda', 'dasdasd'],
+                nightlife: ['dasdasd','dasdasd','asdasd', 'dasdasd'],
+                sightseeing: ['sada','dasda', 'asdasd', 'dasdasd']
+            };
+
+
+            this._renderView('Spots', { spots: spots });
+
+            //Ajax.makeGet("http://www.hackathon.dev/places?pagesizeparameter=1", null, function (response) {
+            //    this._renderView('Spots', {
+            //        spots: response.spots
+            //    });
+            //}, function (error) {
+            //    console.log(error);
+            //});
         },
 
         results: function () {

@@ -1,5 +1,4 @@
 .pick-spots-container {
-    .center-y();
     width: 100%;
     margin: 0 auto;
     background: transparent;
@@ -30,6 +29,38 @@
     &:hover {
         transform: scale(1.1);
         opacity: 0.8;
+    }
+}
+
+#fixedbutton {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    height: 120px;
+    width: 120px;
+    z-index: 1000;
+    display: block;
+    background-color: #8CC152;
+    color: #fff;
+    border-radius: 100%;
+    opacity: 0.9;
+    text-align: center;
+    text-decoration: none;
+    span {
+        position: relative;
+        top: 45px;
+        font-size: 18px;
+    }
+    &:hover {
+        transform: scale(1.2);
+        transition: all .2s ease-in-out;
+        opacity: 1;
+    }
+    &.hidden {
+        display: none;
+    }
+    &.visible {
+        display: block;
     }
 }
 
