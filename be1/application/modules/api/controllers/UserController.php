@@ -119,12 +119,11 @@ class Api_UserController extends Zend_Rest_Controller {
             curl_close($ch);
             $result = json_decode($result);
             foreach ($result->results as $point) {
-                $result_1 = $this->parseResult($point, $interest);
+                $allResults[$interest][] = $this->parseResult($point, $interest);
             }
-            $interests_results[]= $result_1;
         }
 
-        return $interests_results;
+        return $allResults;
     }
 
     private function parseResult($result, $interest) {
