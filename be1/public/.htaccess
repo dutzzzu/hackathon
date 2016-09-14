@@ -1,0 +1,13 @@
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^.*$ - [NC,L]
+RewriteRule ^.*$ index.php [NC,L]
+
+Options +FollowSymlinks
+Header set Access-Control-Allow-Origin "*"
+Header set Access-Control-Allow-Headers "origin, x-requested-with, content-type"
+Header set Access-Control-Allow-Methods "PUT, GET, POST, DELETE, OPTIONS"
+Header set Access-Control-Max-Age "1728000"
