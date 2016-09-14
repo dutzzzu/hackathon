@@ -53,6 +53,7 @@ module.exports = function(grunt) {
                     './node_modules/bootflat/js/bootstrap.min.js',
                     './node_modules/bootflat/bootflat/js/jquery.fs.selecter.min.js',
                     './node_modules/moment/moment.js',
+                    './node_modules/swiper/dist/js/swiper.min.js',
 
                     './src/scripts/main.js',
                     './src/scripts/views/facebook.js',

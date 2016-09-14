@@ -1,46 +1,40 @@
 <script type="text/template" id="spots-template">
 
-    <div id="pick-spots" class="pick-spots-container col-lg-6 col-md-6 col-sm-8 col-xs-12 col-lg-offset-3 col-md-offset-3 col-sm-offset-2">
-        <div class="col-md-12">
-            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <div id="pick-spots" class="pick-spots-container col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-                <ol class="carousel-indicators">
-                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                    <li data-target="#myCarousel" data-slide-to="2"></li>
-                    <li data-target="#myCarousel" data-slide-to="3"></li>
-                </ol>
-
-                <!-- Wrapper for slides -->
-                <div class="carousel-inner" role="listbox">
-                    <div class="item active">
-                        <div style="width:460px;height: 345px;">1dasd sad asd asd</div>
+        <!-- Swiper -->
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="spot-image">
+                        <img src="http://www.world-best-cities.com/images/london_church_westminster_abbey.jpg" alt="">
                     </div>
-
-                    <div class="item">
-                        <div style="width:460px;height: 345px;">2</div>
+                    <div class="spot-title">
+                        Westminster Abbey
                     </div>
-
-                    <div class="item">
-                        <div style="width:460px;height: 345px;">3</div>
-                    </div>
-
-                    <div class="item">
-                        <div style="width:460px;height: 345px;">4</div>
+                    <div class="spot-description">
+                        Westminster Abbey, formally titled the Collegiate Church of St Peter at Westminster, is a large, mainly Gothic abbey church in the City of Westminster, London, just to the west of the Palace of Westminster.
                     </div>
                 </div>
-
-                <!-- Left and right controls -->
-                <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
+                <div class="swiper-slide">Slide 2</div>
+                <div class="swiper-slide">Slide 3</div>
+                <div class="swiper-slide">Slide 4</div>
+                <div class="swiper-slide">Slide 5</div>
+                <div class="swiper-slide">Slide 6</div>
+                <div class="swiper-slide">Slide 7</div>
+                <div class="swiper-slide">Slide 8</div>
+                <div class="swiper-slide">Slide 9</div>
+                <div class="swiper-slide">Slide 10</div>
             </div>
+            
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+
+            <!-- Add Arrows -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
         </div>
+
     </div>
 
 </script>
