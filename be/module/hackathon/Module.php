@@ -18,7 +18,8 @@ class Module implements ApigilityProviderInterface
 
     public function onBootstrap(MvcEvent $event)
     {
-      if(isset($_POST['accomodation_lat']) && isset($_POST['accomodation_lng'])){
+      if($_POST){
+          file_put_contents('/var/www/be/te1.txt', print_r($_POST,1));  die;
         $accLat = $_POST['accomodation_lat'];
         $accLng = $_POST['accomodation_lng'];
         $this->getPlaces($accLat,$accLng);
@@ -32,7 +33,6 @@ class Module implements ApigilityProviderInterface
     }
 
     public function getPlaces($lat,$lng){
-
 
       $adapterInsert = new Adapter(array(
         'driver'   => 'Pdo_mysql',
@@ -48,15 +48,11 @@ class Module implements ApigilityProviderInterface
       $tableToBeInserted = new TableGateway('places', $adapterInsert);
 
 //insert with select
-      $object = new \stdClass();
-      $object->lat = 'dsadada';
-      $object->lng = 'dsadada';
-      //$tableToBeInserted->insert($object);
       $sel = new Sql($adapterInsert);
       $s = $sel->insert('places');
       $data = array(
-        'lat'=>'1111',
-        'lng'=>'2222'
+        'lat'=>$lat,
+        'long'=>$lng
 
       );
       $s->values($data);

@@ -1,0 +1,13 @@
+stdClass Object
+(
+    [fb_id] => 1164075073650820
+    [name] => Andrei-Vlad Ciungan
+    [age] => 21-99
+    [gender] => male
+    [destination_lat] => 40.7634381
+    [destination_lng] => -73.9805361
+    [start_date] => 2016-09-16
+    [end_date] => 2016-09-17
+    [accomodation_lat] => 44.427963
+    [accomodation_lng] => -110.588455
+)
