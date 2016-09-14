@@ -9,9 +9,6 @@ window.fbAsyncInit = function() {
     FB.Event.subscribe('auth.statusChange', function(response)
     {
         if (response.status === 'connected') {
-            console.log("a intrat");
-            var user;
-
             FB.api('/me', {
                 fields: 'first_name,last_name,age_range,id,birthday,gender,hometown,name'
             }, function(response) {

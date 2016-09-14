@@ -33,7 +33,7 @@
             return DataStorage.getObject(DataStorage.storageKeys.users, "travel");
         },
 
-        saveToApi: function () {
+        saveToApi: function (callback) {
             var data = {
                 fb_id: this.get('id'),
                 name: this.get('name'),
@@ -48,18 +48,10 @@
                 end_date: this.get('wizard').step4,
                 accomodation_lat: this.get('wizard').step5.api.lat,
                 accomodation_lng: this.get('wizard').step5.api.lng,
-                // interests: this.get('wizard').step6
+                interests: this.get('wizard').step6
             };
 
-            Ajax.makePost('http://hackathon.dev/user', data, this._saveSuccess.bind(this), this._saveError.bind(this));
-        },
-
-        _saveSuccess: function () {
-
-        },
-
-        _saveError: function () {
-
+            Ajax.makePost('http://hackathon.dev/api/user', data, callback);
         }
     }));
 }());

@@ -146,8 +146,10 @@
             if (this._stepNumber < this._maxSteps) {
                 Application.navigate('wizard/' + (this._stepNumber + 1));
             } else {
-                Application.userModel.saveToApi();
-                Application.navigate('pick-spots');
+                Application.userModel.saveToApi(function (response) {
+                    Application.navigate('pick-spots');
+                    Application.shittyVariableToStoreDataIn = response;
+                });
             }
         },
 

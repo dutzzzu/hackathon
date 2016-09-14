@@ -11,7 +11,7 @@
             if (templateName) {
                 this._callAjax(
                     'GET',
-                    '/hackathon/fe/public/templates/' + templateName + '.html',
+                    '/public/templates/' + templateName + '.html',
                     null,
                     successCb,
                     errorCb,

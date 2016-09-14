@@ -27,7 +27,7 @@
                 nextButton: '.swiper-button-next',
                 prevButton: '.swiper-button-prev',
                 slidesPerView: slidesPerView,
-                centeredSlides: true,
+                centeredSlides: false,
                 spaceBetween: 15
             });
         },
