@@ -12,7 +12,8 @@
             'wizard': 'wizard',
             'wizard/:step': 'wizard',
             'login': 'login',
-            'pick-spots': 'pickSpots'
+            'pick-spots': 'pickSpots',
+            'results': 'results'
         },
 
         index: function () {
@@ -28,8 +29,12 @@
             this._renderView('Login');
         },
 
-        pickSpots: function(options) {
-            this._renderView('Spots', options);
+        pickSpots: function() {
+            this._renderView('Spots');
+        },
+
+        results: function () {
+            this._renderView('Results');
         },
 
         _renderView: function (viewName, attributes) {
