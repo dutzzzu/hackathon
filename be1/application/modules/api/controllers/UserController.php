@@ -98,7 +98,7 @@ class Api_UserController extends Zend_Rest_Controller {
     }
 
     private function getPlaces($lat, $lng, $interests) {
-        $interests_results = array();
+        $allResults = array();
         $arr = array();
         foreach($this->$interests as $key => $interest) {
             // https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=41.896327,12.496116&radius=1500&types=food&types=restaurant&key=AIzaSyB29r2s9IHpQEYH3OsVoO_gWNwEX-OfKXE
